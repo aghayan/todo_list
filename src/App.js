@@ -1,23 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import { Todo } from "./pages/todo_list";
+import { useState } from 'react'
 
 function App() {
+
+  const [list, setList] = useState([
+    {title: 'Learn Html', id: '1', isChecked: false},
+    {title: 'Learn Css', id: '2', isChecked: false},
+    {title: 'Learn Js', id: '3', isChecked: false},
+    {title: 'Learn React', id: '4', isChecked: false},
+    {title: 'Learn PHP', id: '5', isChecked: false},
+
+])
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Todo  todo={list}
+          
+          
+       onChange={(newTodo) => {
+            setList(list.map((elem) => {
+              if (elem.id === newTodo.id) {
+                return newTodo;
+              }
+              return elem
+            }
+            ))
+          }}/>
+    
     </div>
   );
 }
