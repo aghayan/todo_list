@@ -14,7 +14,8 @@ function App() {
 
   return (
     <div className="App">
-      <Todo  todo={list}
+      <Todo  
+      todo={list}
           
           
        onChange={(newTodo) => {
@@ -26,6 +27,8 @@ function App() {
             }
             ))
           }}/>
+
+      {/* <TodoFooter /> */}
     
     </div>
   );
