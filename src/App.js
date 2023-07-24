@@ -1,7 +1,10 @@
 import { Todo } from "./pages/todo_list";
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { RingLoader } from 'react-spinners';
 
 function App() {
+
+  
 
   const [list, setList] = useState([
     {title: 'Learn Html', id: '1', isChecked: false},
@@ -11,6 +14,22 @@ function App() {
     {title: 'Learn PHP', id: '5', isChecked: false},
 
 ])
+
+const [isLoading, setIsLoading] = useState(true);                                                    
+ useEffect(() => {
+  setTimeout(() => {
+    setIsLoading(false);
+  }, 5000);
+}, []);
+
+if (isLoading) {
+  return (
+    <div className="loading">
+      <RingLoader color="rgb(132, 122, 255)" size={200}/>
+      <h2>Loading...</h2>
+    </div>
+   )
+}
 
   return (
     <div className="App">
